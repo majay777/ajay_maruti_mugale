@@ -12,12 +12,16 @@ DB_HOST = "mysql_ctn"
 
 
 engine = create_engine(f"mysql+mysqlconnector://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}")
-# engine = create_engine("mysql+mysqlconnector://root:6equj5_root@mysql_ctn:3306/home_db")
+
 
 # read the json file using pandas
+
 df = pd.read_json("fake_property_data_new.json")
+
 # select columns in different df's
+
 Valuation = df[['Valuation', 'Property_Title']]
+
 HOA = df[['HOA', 'Property_Title']]
 Rehab = df[['Rehab', 'Property_Title']]
 
