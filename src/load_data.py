@@ -54,7 +54,7 @@ df_property = df[['School_Average', 'Latitude', 'Longitude', 'Subdivision',
                   ]]
 
 # Insert to Table Property
-df_property.to_sql('PROPERTY', con=engine, if_exists='replace', index=False)
+df_property.to_sql('PROPERTY', con=engine, if_exists='append', index=False)
 
 # Load MySQL table into a DataFrame
 df_property = pd.read_sql("SELECT * FROM PROPERTY", engine)
@@ -69,7 +69,7 @@ taxex = pd.merge(df_property, df_taxes, on='Property_Title', how='inner')
 taxex = taxex[['Taxes', 'property_id']]
 
 # Insert to Table Taxes
-taxex.to_sql('TAXES', con=engine, if_exists='replace', index=False)
+taxex.to_sql('TAXES', con=engine, if_exists='append', index=False)
 
 ## Valuation
 valuation = pd.merge( df_property,Valuation, on='Property_Title', how='inner')
@@ -78,7 +78,7 @@ valuation = valuation[['property_id', 'Previous_Rent', 'List_Price', 'Zestimate'
                        'Rent_Zestimate', 'Low_FMR', 'High_FMR', 'Redfin_Value']]
 
 # Insert to Table Valuation
-valuation.to_sql('VALUATION', con=engine, if_exists='replace', index=False)
+valuation.to_sql('VALUATION', con=engine, if_exists='append', index=False)
 
 ## Rehab
 rehab = pd.merge(df_property, Rehab, on='Property_Title', how='inner')
@@ -89,7 +89,7 @@ rehab = rehab[['property_id', 'Underwriting_Rehab', 'Rehab_Calculation', 'Paint'
                'Windows_Flag', 'Landscaping_Flag', 'Trashout_Flag']]
 
 # Insert to Table Valuation
-rehab.to_sql('REHAB', con=engine, if_exists='replace', index=False)
+rehab.to_sql('REHAB', con=engine, if_exists='append', index=False)
 
 ## Leads
 leads = pd.merge( df_property,df_leads, on='Property_Title', how='inner')
@@ -98,11 +98,11 @@ leads = leads[['property_id', 'Reviewed_Status', 'Most_Recent_Status',
                'IRR', 'Selling_Reason', 'Seller_Retained_Broker', 'Final_Reviewer']]
 
 # Insert to Table Leads
-leads.to_sql('LEADS', con=engine, if_exists='replace', index=False)
+leads.to_sql('LEADS', con=engine, if_exists='append', index=False)
 
 ## HOA
 hoa = pd.merge(df_property,HOA, on='Property_Title', how='inner')
 hoa = hoa[['HOA', 'HOA_Flag', 'property_id']]
 
 # Insert to Table HOA
-hoa.to_sql('HOA', con=engine, if_exists='replace', index=False)
+hoa.to_sql('HOA', con=engine, if_exists='append', index=False)
