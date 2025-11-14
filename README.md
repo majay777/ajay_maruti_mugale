@@ -90,6 +90,8 @@ For MySQL Docker image reference:
 git clone https://github.com/majay777/ajay_maruti_mugale.git
 ```
 
+✏️ Note: Run Following commands from directory where docker-compose.initial.yml and Dockerfile are there.
+
 **Start the MySQL database in Docker:**
 
 ```
