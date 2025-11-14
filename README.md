@@ -82,3 +82,14 @@ For MySQL Docker image reference:
 ## Solutions and Instructions (Filed by Candidate)
 
 **Document your solution here:**
+
+
+docker-compose -f docker-compose.initial.yml up --build -d
+
+docker network create mynet 
+
+docker network connect mynet mysql_ctn 
+
+docker build -t python_etl .   
+
+docker run --name etl_app --network mynet python_etl 
