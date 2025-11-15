@@ -1,7 +1,7 @@
 import mysql.connector
 import os
 
-DB_HOST = os.getenv("mysql_ctn")
+
 DB_USER = os.getenv("MYSQL_USER")
 DB_PASS = os.getenv("MYSQL_PASSWORD","6equj5_db_user" )
 DB_NAME = os.getenv("MYSQL_DATABASE", "home_db")
