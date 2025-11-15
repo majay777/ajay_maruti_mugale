@@ -7,9 +7,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy your script
-COPY src/read.py .
-COPY src/schema.sql .
-COPY src/load_data.py .
+COPY scripts/read.py .
+COPY sql/schema.sql .
+COPY scripts/load_data.py .
 COPY data/fake_property_data_new.json .
 
 # Set environment variables
